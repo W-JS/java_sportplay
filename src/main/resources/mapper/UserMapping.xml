@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.sportplay.dao.UserDao">
+    <select id="getUserByMessage" resultType="com.springboot.sportplay.bean.User">
+        SELECT * FROM easyuser WHERE username = #{username} AND password = #{password} AND state = 1;
+    </select>
+
+    <select id="getAllUser" resultType="com.springboot.sportplay.bean.User">
+        SELECT * FROM easyuser
+        <if test="username !=null ">
+            WHERE username like #{username}
+        </if>
+        LIMIT #{pageStart},#{pageSize}
+    </select>
+
+    <select id="getUserCounts" resultType="java.lang.Integer">
+        SELECT count(*) FROM easyuser
+        <if test="username !=null ">
+            WHERE username like #{username}
+        </if>
+    </select>
+    
+    <update id="updateState">
+        UPDATE easyuser SET state = #{state} WHERE id = #{id}
+    </update>
+
+    <insert id="addUser">
+        INSERT INTO easyuser (username,password,email,role,state) VALUE (#{username},#{password},#{email},#{role},#{state})
+    </insert>
+
+    <delete id="deleteUser">
+        DELETE FROM easyuser WHERE id = #{id}
+    </delete>
+
+    <select id="getUpdateUser" resultType="com.springboot.sportplay.bean.User">
+        SELECT * FROM easyuser WHERE id = #{id}
+    </select>
+
+    <update id="editUser">
+        UPDATE easyuser SET username = #{username},password = #{password},email = #{email} WHERE id = #{id}
+    </update>
+</mapper>
