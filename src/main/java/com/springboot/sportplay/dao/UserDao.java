@@ -16,4 +16,8 @@ public interface UserDao {
     public int deleteUser(int id);
     public User getUpdateUser(int id);
     public int editUser(User user);
+
+    //My-Start
+    public User getUserByUsername(@Param("username") String username);
+    //My-End
 }

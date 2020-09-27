@@ -29,4 +29,19 @@ public class LoginController {
         String res_json = JSON.toJSONString(res);
         return res_json;
     }
+
+    //My-Start
+    @RequestMapping("/usernamerules")
+    public String usernamerules(String username){
+        String flag = "error";
+        User us = userDao.getUserByUsername(username);
+        HashMap<String, Object> res = new HashMap<>();
+        if(us != null){
+            flag = "success";
+        }
+        res.put("flag",flag);
+        String res_json = JSON.toJSONString(res);
+        return res_json;
+    }
+    //My-End
 }

@@ -40,4 +40,10 @@
     <update id="editUser">
         UPDATE easyuser SET username = #{username},password = #{password},email = #{email} WHERE id = #{id}
     </update>
+
+    <!-- My-Start -->
+    <select id="getUserByUsername" resultType="com.springboot.sportplay.bean.User">
+        SELECT * FROM easyuser WHERE username = #{username};
+    </select>
+    <!-- My-End -->
 </mapper>
