@@ -40,6 +40,7 @@ public class LoginController {
             flag = "success";
         }
         res.put("flag",flag);
+        System.out.println(flag);
         String res_json = JSON.toJSONString(res);
         return res_json;
     }
